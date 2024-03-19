@@ -47,7 +47,6 @@ class HardWork {
       }
       this._do(start, start + taskSize);
       start += taskSize;
-      console.log(`${start}개 처리`);
       
     }, 100);
   }
@@ -56,7 +55,6 @@ class HardWork {
     const tasks = this._tasks.slice(start, end - 1);
     for(let i = 0; i < tasks.length; i++){
       queueMicrotask(()=>{
-        // 근데 task 안에 blob에 대한 await이 있는데 .. 작업 순서 보장이 될까?..
         this._tasks[i]();
       });
     }
